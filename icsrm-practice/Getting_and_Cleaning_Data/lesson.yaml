@@ -1,0 +1,188 @@
+- Class: meta
+  Course: icsrm-practice
+  Lesson: Getting and Cleaning Data
+  Author: Andreas Schneider
+  Type: Standard
+  Organization: Prepared for the International Career Service Rhein-Main
+  Version: 2.4.5
+
+
+- Class: wq_message
+  Output: Welcome to Day 2! In this 15-minute lesson, you'll practice dplyr data manipulation and the pipe operator using the Palmer Penguins dataset.
+
+- Class: cmd_question
+  Output: First, let's load the required packages. Type library(tidyverse) to load dplyr and other tidyverse packages.
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: Type library(tidyverse)
+
+- Class: cmd_question
+  Output: Now load the penguins dataset. Type library(palmerpenguins)
+  CorrectAnswer: library(palmerpenguins)
+  AnswerTests: omnitest(correctExpr='library(palmerpenguins)')
+  Hint: Type library(palmerpenguins)
+
+- Class: cmd_question
+  Output:  Load the penguins data into your environment by typing data(penguins)
+  CorrectAnswer: data(penguins)
+  AnswerTests: omnitest(correctExpr='data(penguins)')
+  Hint: Type data(penguins)
+
+- Class: wq_message
+  Output: Great! Now let's practice using the pipe operator |> to chain operations together.
+
+- Class: cmd_question
+  Output: Use glimpse() to see the structure of penguins. Type penguins |>  glimpse()
+  CorrectAnswer: penguins |>  glimpse()
+  AnswerTests: omnitest(correctExpr='penguins |> glimpse()')
+  Hint: Type penguins |> glimpse()
+
+- Class: text
+  Output: Perfect! The pipe |> takes the output from the left and passes it as the first argument to the function on the right. This makes code much more readable!
+
+- Class: text
+  Output: Now let's practice filter() to select rows.
+
+- Class: cmd_question
+  Output: Filter the penguins data to show only Adelie penguins. Type penguins |> filter(species == "Adelie")
+  CorrectAnswer: penguins |> filter(species == "Adelie")
+  AnswerTests: omnitest(correctExpr='penguins |> filter(species == "Adelie")')
+  Hint: Type penguins |> filter(species == "Adelie") - don't forget the quotes and double equals!
+
+- Class: cmd_question
+  Output:  Now filter for penguins with body_mass_g greater than 4500. Type penguins |> filter(body_mass_g > 4500)
+  CorrectAnswer: penguins |> filter(body_mass_g > 4500)
+  AnswerTests: omnitest(correctExpr='penguins |> filter(body_mass_g > 4500)')
+  Hint: Type penguins |> filter(body_mass_g > 4500)
+
+- Class: cmd_question
+  Output: Let's combine two filters! Get Adelie penguins that weigh more than 4000g. Use the & operator. Type penguins |> filter(species == "Adelie" & body_mass_g > 4000)
+  CorrectAnswer: penguins |> filter(species == "Adelie" & body_mass_g > 4000)
+  AnswerTests: omnitest(correctExpr='penguins |> filter(species == "Adelie" & body_mass_g > 4000)')
+  Hint: Type penguins |> filter(species == "Adelie" & body_mass_g > 4000)
+
+- Class: text
+  Output: Excellent filtering! Now let's practice select() to choose columns.
+
+- Class: cmd_question
+  Output: Select only the species and body_mass_g columns. Type penguins |> select(species, body_mass_g)
+  CorrectAnswer: penguins |> select(species, body_mass_g)
+  AnswerTests: omnitest(correctExpr='penguins |> select(species, body_mass_g)')
+  Hint: Type penguins |> select(species, body_mass_g)
+
+- Class: cmd_question
+  Output: Now select all columns that start with "bill". Use the helper function starts_with(). Type penguins |> select(starts_with("bill"))
+  CorrectAnswer: penguins |> select(starts_with("bill"))
+  AnswerTests: omnitest(correctExpr='penguins |> select(starts_with("bill"))')
+  Hint: Type penguins|> select(starts_with("bill"))
+
+- Class: text
+  Output: Great work! Now let's practice mutate() to create new columns.
+
+- Class: cmd_question
+  Output: Create a new column called body_mass_kg by converting body_mass_g to kilograms (divide by 1000). Type penguins |> mutate(body_mass_kg = body_mass_g / 1000)
+  CorrectAnswer: penguins |> mutate(body_mass_kg = body_mass_g / 1000)
+  AnswerTests: omnitest(correctExpr='penguins |> mutate(body_mass_kg = body_mass_g / 1000)')
+  Hint: Type penguins |> mutate(body_mass_kg = body_mass_g / 1000)
+
+- Class: cmd_question
+  Output: Create a bill_ratio column (bill_length_mm divided by bill_depth_mm). Type penguins |> mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+  CorrectAnswer: penguins |> mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+  AnswerTests: omnitest(correctExpr='penguins |> mutate(bill_ratio = bill_length_mm / bill_depth_mm)')
+  Hint: Type penguins|> mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+
+- Class: text
+  Output: Now let's practice chaining multiple operations together!
+
+- Class: cmd_question
+  Output: Chain together filter and select. Get only female penguins, then select species and body_mass_g. Type penguins |> filter(sex == "female") |> select(species, body_mass_g)
+  CorrectAnswer: penguins |> filter(sex == "female") |> select(species, body_mass_g)
+  AnswerTests: omnitest(correctExpr='penguins |> filter(sex == "female") |> select(species, body_mass_g)')
+  Hint: Type penguins |> filter(sex == "female") |> select(species, body_mass_g)
+
+- Class: text
+  Output: Excellent! Now let's practice arrange() to sort data.
+
+- Class: cmd_question
+  Output: Arrange penguins by body_mass_g in ascending order (lightest first). Type penguins |> arrange(body_mass_g).
+  CorrectAnswer: penguins |> arrange(body_mass_g)
+  AnswerTests: omnitest(correctExpr='penguins |> arrange(body_mass_g)')
+  Hint: Type penguins |> arrange(body_mass_g)
+
+- Class: cmd_question
+  Output: Now arrange by body_mass_g in descending order (heaviest first). Use desc(). Type penguins |> arrange(desc(body_mass_g))
+  CorrectAnswer: penguins |> arrange(desc(body_mass_g))
+  AnswerTests: omnitest(correctExpr='penguins |> arrange(desc(body_mass_g))')
+  Hint: Type penguins |> arrange(desc(body_mass_g))
+
+- Class: text
+  Output: Now for the most powerful combination - group_by() and summarise()!
+
+- Class: cmd_question
+  Output: Calculate the mean body mass by species. Type penguins |> group_by(species) |> summarise(mean_mass = mean(body_mass_g, na.rm = TRUE))
+  CorrectAnswer: penguins |> group_by(species) |> summarise(mean_mass = mean(body_mass_g, na.rm = TRUE))
+  AnswerTests: omnitest(correctExpr='penguins |> group_by(species) |> summarise(mean_mass = mean(body_mass_g, na.rm = TRUE))')
+  Hint: Type penguins |> group_by(species) |> summarise(mean_mass = mean(body_mass_g, na.rm = TRUE))
+
+- Class: cmd_question
+  Output: Count how many penguins of each species we have. Type penguins |> group_by(species) |> summarise(count = n())
+  CorrectAnswer: penguins |> group_by(species) |> summarise(count = n())
+  AnswerTests: omnitest(correctExpr='penguins |> group_by(species) |> summarise(count = n())')
+  Hint: Type penguins |> group_by(species) |> summarise(count = n()). In R, n() is a helper function primarily from the dplyr package used to count the number of observations in a data group. n() is context dependent. It is designed to work exclusively inside 'data-masking' verbs like summarise(), mutate(), and filter(). If you call it on its own in the console, it will return an error.
+
+- Class: text
+  Output: Time for a challenge! Let's combine everything you've learned.
+
+- Class: cmd_question
+  Output: Create a pipeline that does ALL of these - filter for penguins with flipper_length_mm > 200, select species and body_mass_g, arrange by body_mass_g descending. Type penguins |> filter(flipper_length_mm > 200) |> select(species, body_mass_g) |> arrange(desc(body_mass_g))
+  CorrectAnswer: penguins |> filter(flipper_length_mm > 200) |> select(species, body_mass_g) |> arrange(desc(body_mass_g))
+  AnswerTests: omnitest(correctExpr='penguins |> filter(flipper_length_mm > 200) |> select(species, body_mass_g) |> arrange(desc(body_mass_g))')
+  Hint: Type penguins |> filter(flipper_length_mm > 200) |> select(species, body_mass_g) |> arrange(desc(body_mass_g))
+
+- Class: text
+  Output: Fantastic! Now let's do a quick ggplot2 exercise to practice visualization.
+
+- Class: cmd_question
+  Output: Create a simple scatter plot of bill_length_mm vs bill_depth_mm. Type ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point()
+  CorrectAnswer: ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point()')
+  Hint: Type ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + geom_point()
+
+- Class: cmd_question
+  Output: Now add color by species. Type ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()
+  CorrectAnswer: ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()')
+  Hint: Type ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()
+
+- Class: cmd_question
+  Output: Create a histogram of body_mass_g. Type ggplot(penguins, aes(x = body_mass_g)) + geom_histogram()
+  CorrectAnswer: ggplot(penguins, aes(x = body_mass_g)) + geom_histogram()
+  AnswerTests: omnitest(correctExpr='ggplot(penguins, aes(x = body_mass_g)) + geom_histogram()')
+  Hint: Type ggplot(penguins, aes(x = body_mass_g)) + geom_histogram()
+
+- Class: cmd_question
+  Output: Create a boxplot comparing body_mass_g across species. Type ggplot(penguins, aes(x = species, y = body_mass_g)) + geom_boxplot()
+  CorrectAnswer: ggplot(penguins, aes(x = species, y = body_mass_g)) + geom_boxplot()
+  AnswerTests: omnitest(correctExpr='ggplot(penguins, aes(x = species, y = body_mass_g)) + geom_boxplot()')
+  Hint: ggplot(penguins, aes(x = species, y = body_mass_g)) + geom_boxplot()
+
+- Class: text
+  Output: Final challenge! Combine dplyr and ggplot2.
+
+- Class: cmd_question
+  Output: Filter for only female penguins, then create a scatter plot of flipper_length_mm vs body_mass_g colored by species. Type penguins |> filter(sex == "female") |> ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) + geom_point()
+  CorrectAnswer: penguins |> filter(sex == "female") |> ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) + geom_point()
+  AnswerTests: omnitest(correctExpr='penguins |> filter(sex == "female") |> ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) + geom_point()')
+  Hint: Type penguins|> filter(sex == "female") |> ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) + geom_point()
+
+- Class: text
+  Output: Excellent work! You've completed the Day 2 Data Wrangling lesson!
+
+- Class: text
+  Output: You practiced the pipe operator, all major dplyr verbs (filter, select, mutate, arrange, group_by, summarise), and created multiple ggplot2 visualizations.
+
+- Class: text
+  Output: These skills form the foundation of modern data analysis in R. Keep practicing by working with different datasets!
+
+- Class: text
+  Output: Remember - you can always use the pipe |> to make your code more readable. Chain operations together to tell a clear story with your data!

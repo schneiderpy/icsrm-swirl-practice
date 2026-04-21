@@ -1,0 +1,149 @@
+- Class: meta
+  Course: icsrm-practice Day 1
+  Lesson: R-basics
+  Author: Andreas Schneider
+  Type: Standard
+  Organization: Prepared for the International Career Service Rhein-Main
+  Version: 2.4.5
+
+- Class: wq_message
+  Output: Welcome to the R Workshop Day 1 Fundamentals! This 15-minute lesson will reinforce what you learned today about R basics, vectors, and data frames.
+  CorrectAnswer: Expression or Value
+  AnswerTests:
+  Hint: Type a hint.
+
+
+- Class: wq_message
+  Output: Let's start with basic calculations. Remember, R can be used as a calculator!
+
+- Class: cmd_question
+  Output: Calculate the sum of 15 and 27. Just type the expression and press Enter.
+  CorrectAnswer: 15 + 27
+  AnswerTests: omnitest(correctExpr='15 + 27')
+  Hint: Type 15 + 27 and press Enter.
+
+- Class: cmd_question
+  Output: Great! Now calculate 8 squared (8 to the power of 2). Use the ^ operator.
+  CorrectAnswer: 8^2
+  AnswerTests: omnitest(correctExpr='8^2')
+  Hint: Type 8^2
+
+- Class: wq_message
+  Output: Excellent! Now let's practice creating variables.
+
+
+- Class: cmd_question
+  Output: Create a variable called my_age and assign it your age (or any number between 18 and 100). Use the <- operator.
+  CorrectAnswer:  my_age <- 25
+  AnswerTests: omnitest(correctExpr=' my_age <- 25')
+  Hint: Type something like my_age <- 25 (replace 25 with any age)
+
+- Class: cmd_question
+  Output: Now create a variable called age_in_days that multiplies my_age by 365.
+  CorrectAnswer: age_in_days <- my_age * 365
+  AnswerTests: omnitest(correctExpr='age_in_days <- my_age * 365')
+  Hint: Type age_in_days <- my_age * 365
+
+- Class: cmd_question
+  Output: Display the value of age_in_days by typing its name.
+  CorrectAnswer: age_in_days
+  AnswerTests: omnitest(correctExpr='age_in_days')
+  Hint: Just type age_in_days
+
+- Class: wq_message
+  Output: Perfect! Now let's work with vectors. Remember, vectors are created using the c() function.
+
+- Class: cmd_question
+  Output: "Create a vector called temperatures with these values: 22, 25, 19, 23, 26. Remember to use c()."
+  CorrectAnswer: temperatures <- c(22, 25, 19, 23, 26)
+  AnswerTests: omnitest(correctExpr='temperatures <- c(22, 25, 19, 23, 26)')
+  Hint: Type temperatures <- c(22, 25, 19, 23, 26)
+
+- Class: cmd_question
+  Output: Calculate the mean (average) of temperatures using the mean() function.
+  CorrectAnswer: mean(temperatures)
+  AnswerTests: omnitest(correctExpr='mean(temperatures)')
+  Hint: Type mean(temperatures)
+
+- Class: cmd_question
+  Output: Get the maximum temperature using the max() function.
+  CorrectAnswer: max(temperatures)
+  AnswerTests: omnitest(correctExpr='max(temperatures)')
+  Hint: Type max(temperatures)
+
+- Class: cmd_question
+  Output: Access the first element of the temperatures vector using square brackets [1].
+  CorrectAnswer: temperatures[1]
+  AnswerTests: omnitest(correctExpr='temperatures[1]')
+  Hint: Type max(temperatures)
+
+- Class: text
+  Output: Excellent work with vectors! Now let's create a simple data frame.
+
+- Class: cmd_question
+  Output: "Create a vector called student_names with three names: Alice, Bob, Charlie. Don't forget the quotes!"
+  CorrectAnswer: student_names <- c("Alice", "Bob", "Charlie")
+  AnswerTests: omnitest(correctExpr='student_names <- c("Alice", "Bob", "Charlie")')
+  Hint: Type student_names <- c("Alice", "Bob", "Charlie")
+
+- Class: cmd_question
+  Output: "Create a vector called scores with three numbers: 85, 92, 78."
+  CorrectAnswer: scores <- c(85, 92, 78)
+  AnswerTests: omnitest(correctExpr='scores <- c(85, 92, 78)')
+  Hint: Type scores <- c(85, 92, 78)
+
+- Class: cmd_question
+  Output: Now create a data frame called students using data.frame(name = student_names, score = scores).
+  CorrectAnswer: students <- data.frame(name = student_names, score = scores)
+  AnswerTests: omnitest(correctExpr='students <- data.frame(name = student_names, score = scores)')
+  Hint: Type students <- data.frame(name = student_names, score = scores)
+
+- Class: cmd_question
+  Output: Type your text output here.
+  CorrectAnswer: students
+  AnswerTests: omnitest(correctExpr='students')
+  Hint: Type students
+
+- Class: cmd_question
+  Output: Access the score column using the $ operator. Type students$score
+  CorrectAnswer: students$score
+  AnswerTests: omnitest(correctExpr='students$score')
+  Hint: Type students$score
+
+- Class: cmd_question
+  Output: Calculate the mean of the score column. You can use mean(students$score).
+  CorrectAnswer: mean(students$score)
+  AnswerTests: omnitest(correctExpr='mean(students$score)')
+  Hint: Type mean(students$score)
+
+- Class: text
+  Output:  Fantastic! You've just practiced all the key concepts from Day 1.
+
+- Class: text
+  Output:  Let's do one final challenge that combines everything!
+
+- Class: cmd_question
+  Output: "Create a vector called ages with values: 23, 25, 22 (matching our three students)."
+  CorrectAnswer: ages <- c(23, 25, 22)
+  AnswerTests: omnitest(correctExpr='ages <- c(23, 25, 22)')
+  Hint: Type ages <- c(23, 25, 22)
+
+- Class: cmd_question
+  Output: Add the ages vector as a new column to the students data frame. Type students$age <- ages
+  CorrectAnswer: students$age <- ages
+  AnswerTests: omnitest(correctExpr='students$age <- ages')
+  Hint:  Type students$age <- ages
+
+- Class: cmd_question
+  Output: Display your updated students data frame with all three columns.
+  CorrectAnswer: students
+  AnswerTests: omnitest(correctExpr='students')
+  Hint: Type students
+
+
+
+- Class: text
+  Output: Congratulations! You've completed the Day 1 Fundamentals lesson. You've practiced variables, vectors, basic functions, and data frames - all the essentials from today's workshop!
+
+- Class: text
+  Output:  Keep practicing these concepts, and you'll be ready for Day 2's more advanced topics!
